@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbuqeawhkk2vj"]
+
+[ext_resource type="Texture2D" uid="uid://b0a8dv2xsu6gm" path="res://dodge_the_creeps_2d_assets/Coin_Gems/yellow_gem_1.png" id="1_6bmww"]
+[ext_resource type="Texture2D" uid="uid://cpaolyhtamvp" path="res://dodge_the_creeps_2d_assets/Coin_Gems/yellow_gem_2.png" id="2_tnkpv"]
+[ext_resource type="Texture2D" uid="uid://b1jslqm715l7c" path="res://dodge_the_creeps_2d_assets/Coin_Gems/yellow_gem_3.png" id="3_5yofv"]
+[ext_resource type="Texture2D" uid="uid://blcfo0cijfrjo" path="res://dodge_the_creeps_2d_assets/Coin_Gems/yellow_gem_4.png" id="4_boyep"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tiiv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6bmww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tnkpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5yofv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_boyep")
+}],
+"loop": true,
+"name": &"speen",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0f72w"]
+radius = 5.0
+height = 14.0
+
+[node name="coin" type="RigidBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5tiiv")
+animation = &"speen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0f72w")
