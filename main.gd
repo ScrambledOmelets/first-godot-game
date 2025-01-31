@@ -14,11 +14,14 @@ func _process(delta: float) -> void:
 
 func game_over() -> void:
 	pass # Replace with function body.
+	$music.stop()
+	$deathSound.play()
 	$scoreTimer.stop()
 	$mobTimer.stop()
 	$HUD.show_game_over()
 	
 func new_game():
+	$music.play() #plays music
 	score = 0
 	#makes all the mobs delete themselves just b4 a new game
 	get_tree().call_group("mobs", "queue_free")
