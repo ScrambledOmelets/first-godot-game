@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 func game_over() -> void:
 	pass # Replace with function body.
 	
-	
+	print("game ended")
 	$music.stop()
 	$deathSound.play()
 	$scoreTimer.stop()
