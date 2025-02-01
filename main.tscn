@@ -75,6 +75,7 @@ curve = SubResource("Curve2D_qlxim")
 
 [node name="coinSpawns" type="PathFollow2D" parent="coinPath"]
 
+[connection signal="coin_grab" from="Player" to="." method="_on_player_coin_grab"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="mobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
