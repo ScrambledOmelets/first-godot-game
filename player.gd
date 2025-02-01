@@ -62,6 +62,6 @@ func _on_body_entered(body: Node2D) -> void:
 		print("has collided with  ", body.name)
 	else:
 		coin_grab.emit()
-		$CollisionShape2D.set_deferred("disabled", true)
-		print("has collided with  ", body.name)
+		#$CollisionShape2D.set_deferred("disabled", true)
+		print("woah you hit  ", body.name)
 	

@@ -101,3 +101,7 @@ func _on_coin_timer_timeout() -> void:
 	
 	
 	
+
+
+func _on_player_coin_grab() -> void:
+	pass # Replace with function body.

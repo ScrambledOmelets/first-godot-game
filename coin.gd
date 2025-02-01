@@ -25,5 +25,6 @@ func _on_body_entered(body: Node) -> void:
 	pass # Replace with function body.
 	
 	hide() #hide coin
+	print("coin has been hit!")
 	grabbed.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	
