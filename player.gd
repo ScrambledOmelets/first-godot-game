@@ -1,7 +1,6 @@
 extends Area2D
 #custom signal for player collisions
 signal hit
-signal coin_grab
 
 @export var speed = 400 #in pixels/sec
 var screen_size
@@ -55,14 +54,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
-	if body.is_in_group("mobs"):
-		hide() #player disappears after being hit
-		hit.emit()
-		$CollisionShape2D.set_deferred("disabled", true) #deferred to prevent the hit triggering more than once
-		print("has collided with  ", body.name)
-	else:
-		coin_grab.emit()
-		$CollisionShape2D.set_deferred("disabled", true)
-		print("has collided with  ", body.name)
-		
+	hide() #player disappears after being hit
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true) #deferred to prevent the hit triggering more than once
+	
 	
