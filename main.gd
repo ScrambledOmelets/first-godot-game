@@ -14,9 +14,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+##going to unlink this and make the player entering mobs trigger gameover?
 func game_over() -> void:
 	pass # Replace with function body.
+	
+	
 	$music.stop()
 	$deathSound.play()
 	$scoreTimer.stop()
@@ -74,7 +76,7 @@ func _on_start_timer_timeout() -> void:
 	$scoreTimer.start()
 	$coinTimer.start()
 
-#manages coin spawning
+#manages coin spawning. it works
 func _on_coin_timer_timeout() -> void:
 	pass # Replace with function body.
 	var coin = coin_scene.instantiate()
