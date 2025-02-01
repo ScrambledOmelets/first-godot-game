@@ -52,7 +52,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="coinTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="startPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
