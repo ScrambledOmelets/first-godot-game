@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://d0ea1r3euouut"]
+[gd_scene load_steps=11 format=4 uid="uid://d0ea1r3euouut"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3vnpt"]
 [ext_resource type="PackedScene" uid="uid://cxsmqxkpaxwpt" path="res://mob.tscn" id="2_rcuhp"]
+[ext_resource type="PackedScene" uid="uid://bbuqeawhkk2vj" path="res://coin.tscn" id="3_f5s3s"]
 [ext_resource type="PackedScene" uid="uid://4r17muy8owkb" path="res://player.tscn" id="3_q34rc"]
 [ext_resource type="PackedScene" uid="uid://neu7q4cfuwe2" path="res://hud.tscn" id="4_0nk18"]
 [ext_resource type="AudioStream" uid="uid://b2xwpsime6v18" path="res://dodge_the_creeps_2d_assets/art/gameover.wav" id="5_henlw"]
@@ -20,9 +21,16 @@ sampling_rate = 44100.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_nrqt6"]
 packet_sequence = SubResource("OggPacketSequence_dtdu8")
 
+[sub_resource type="Curve2D" id="Curve2D_qlxim"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0)
+}
+point_count = 2
+
 [node name="Main" type="Node"]
 script = ExtResource("1_3vnpt")
 mob_scene = ExtResource("2_rcuhp")
+coin_scene = ExtResource("3_f5s3s")
 
 [node name="background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -43,6 +51,9 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
+[node name="coinTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="startPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
@@ -60,8 +71,14 @@ parameters/looping = false
 [node name="deathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_henlw")
 
+[node name="coinPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_qlxim")
+
+[node name="coinSpawns" type="PathFollow2D" parent="coinPath"]
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="mobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="coinTimer" to="." method="_on_coin_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
