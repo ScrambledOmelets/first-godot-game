@@ -19,7 +19,10 @@ func show_game_over():
 	$startButton.show()
 	
 func update_score(score):
-	$scoreLabel.text = str(score)
+	$scoreLabel.text = str("score: ", score)
+	
+func update_coinScore(coinScore):
+	$coinLabel.text = str(coinScore, ":gems")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
