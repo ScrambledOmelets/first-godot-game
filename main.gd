@@ -5,6 +5,7 @@ extends Node
 
 var score
 var coinScore
+var coin
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,9 +30,11 @@ func game_over() -> void:
 func new_game():
 	$music.play() #plays music
 	score = 0
+	coinScore = 0
 	#makes all the mobs delete themselves just b4 a new game
 	get_tree().call_group("mobs", "queue_free")
 	$HUD.update_score(score)
+	$HUD.update_score(coinScore)
 	$HUD.show_message("prepare yourself...")
 	$Player.start($startPosition.position)
 	$startTimer.start()
@@ -79,7 +82,7 @@ func _on_start_timer_timeout() -> void:
 #manages coin spawning. it works
 func _on_coin_timer_timeout() -> void:
 	pass # Replace with function body.
-	var coin = coin_scene.instantiate()
+	coin = coin_scene.instantiate()
 	
 	#random path2d point
 	var coin_spawn_location = $coinPath/coinSpawns
@@ -105,3 +108,6 @@ func _on_coin_timer_timeout() -> void:
 
 func _on_player_coin_grab() -> void:
 	pass # Replace with function body.
+	remove_child(coin) #hopefully this removes the coin
+	coinScore += 1
+	$HUD.update_score(coinScore)
