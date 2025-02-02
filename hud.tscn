@@ -13,16 +13,11 @@ events = [SubResource("InputEventAction_1ivae")]
 script = ExtResource("1_a1g7k")
 
 [node name="scoreLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -22.5
-offset_right = 22.5
+offset_right = 45.0
 offset_bottom = 78.0
-grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_xxfgb")
-theme_override_font_sizes/font_size = 64
-text = "0"
+theme_override_font_sizes/font_size = 45
+text = "score: 0"
 vertical_alignment = 1
 
 [node name="Message" type="Label" parent="."]
@@ -64,6 +59,20 @@ text = "start"
 [node name="messageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="coinLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_right = 3.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_xxfgb")
+theme_override_font_sizes/font_size = 45
+text = "0: gems"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="messageTimer" to="." method="_on_message_timer_timeout"]
