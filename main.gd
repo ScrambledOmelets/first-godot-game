@@ -33,8 +33,9 @@ func new_game():
 	coinScore = 0
 	#makes all the mobs delete themselves just b4 a new game
 	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("coins", "queue_free") #hopefully deletes coins
 	$HUD.update_score(score)
-	$HUD.update_score(coinScore)
+	$HUD.update_coinScore(coinScore)
 	$HUD.show_message("prepare yourself...")
 	$Player.start($startPosition.position)
 	$startTimer.start()
@@ -110,4 +111,4 @@ func _on_player_coin_grab() -> void:
 	pass # Replace with function body.
 	remove_child(coin) #hopefully this removes the coin
 	coinScore += 1
-	$HUD.update_score(coinScore)
+	$HUD.update_coinScore(coinScore)
