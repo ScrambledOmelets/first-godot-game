@@ -21,10 +21,11 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	
 
 
-#func _on_body_entered(body: Node) -> void:
-	#pass # Replace with function body.
-	#
-	#hide() #hide coin
-	#print("coin has been hit!")
-	#grabbed.emit()
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+	print("a coin was tapped by! ", get_colliding_bodies())
+	if body.is_in_group("player"):
+		#hide() #hide coin
+		print("coin has been hit!")
+	
 	

@@ -5,6 +5,7 @@ signal coin_grab
 
 @export var speed = 400 #in pixels/sec
 var screen_size
+var thatCoin
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,9 +60,10 @@ func _on_body_entered(body: Node2D) -> void:
 		hide() #player disappears after being hit
 		hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true) #deferred to prevent the hit triggering more than once
-		print("has collided with  ", body.name)
+		#print("has collided with  ", body.name)
 	else:
 		coin_grab.emit()
-		#$CollisionShape2D.set_deferred("disabled", true)
-		print("woah you hit  ", body.name)
+		body.queue_free() #did not know this worked as a function...
+		
+		#print("woah you hit  ", body.name)
 	

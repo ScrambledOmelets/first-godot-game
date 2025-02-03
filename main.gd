@@ -15,11 +15,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-##going to unlink this and make the player entering mobs trigger gameover?
 func game_over() -> void:
 	pass # Replace with function body.
 	
-	print("game ended")
 	$music.stop()
 	$deathSound.play()
 	$scoreTimer.stop()
@@ -33,7 +31,7 @@ func new_game():
 	coinScore = 0
 	#makes all the mobs delete themselves just b4 a new game
 	get_tree().call_group("mobs", "queue_free")
-	get_tree().call_group("coins", "queue_free") #hopefully deletes coins
+	get_tree().call_group("coins", "queue_free") #hopefully deletes coins. it do
 	$HUD.update_score(score)
 	$HUD.update_coinScore(coinScore)
 	$HUD.show_message("prepare yourself...")
@@ -102,6 +100,7 @@ func _on_coin_timer_timeout() -> void:
 	coin.linear_velocity = velocity.rotated(direction)
 	
 	add_child(coin)
+	#print("just made! ", coin.name)
 	
 	
 	
@@ -109,6 +108,6 @@ func _on_coin_timer_timeout() -> void:
 
 func _on_player_coin_grab() -> void:
 	pass # Replace with function body.
-	remove_child(coin) #hopefully this removes the coin
+	#most of this logic is handled in the player file
 	coinScore += 1
 	$HUD.update_coinScore(coinScore)
