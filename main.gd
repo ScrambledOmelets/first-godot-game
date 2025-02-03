@@ -101,13 +101,10 @@ func _on_coin_timer_timeout() -> void:
 	
 	add_child(coin)
 	#print("just made! ", coin.name)
-	
-	
-	
-
 
 func _on_player_coin_grab() -> void:
 	pass # Replace with function body.
 	#most of this logic is handled in the player file
 	coinScore += 1
 	$HUD.update_coinScore(coinScore)
+	$coinSound.play()

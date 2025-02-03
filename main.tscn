@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d0ea1r3euouut"]
+[gd_scene load_steps=11 format=4 uid="uid://d0ea1r3euouut"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3vnpt"]
 [ext_resource type="PackedScene" uid="uid://cxsmqxkpaxwpt" path="res://mob.tscn" id="2_rcuhp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4r17muy8owkb" path="res://player.tscn" id="3_q34rc"]
 [ext_resource type="PackedScene" uid="uid://neu7q4cfuwe2" path="res://hud.tscn" id="4_0nk18"]
 [ext_resource type="AudioStream" uid="uid://b2xwpsime6v18" path="res://dodge_the_creeps_2d_assets/art/gameover.wav" id="5_henlw"]
+[ext_resource type="AudioStream" uid="uid://5gwst1puo5d8" path="res://dodge_the_creeps_2d_assets/retro-coin-4-236671.mp3" id="7_cm8pr"]
 
 [sub_resource type="Curve2D" id="Curve2D_f13ur"]
 _data = {
@@ -72,6 +73,7 @@ curve = SubResource("Curve2D_qlxim")
 [node name="coinSpawns" type="PathFollow2D" parent="coinPath"]
 
 [node name="coinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cm8pr")
 
 [connection signal="coin_grab" from="Player" to="." method="_on_player_coin_grab"]
 [connection signal="hit" from="Player" to="." method="game_over"]
